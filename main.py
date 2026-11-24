@@ -48,10 +48,15 @@ def resolve_output_dir():
     return out
 
 
+def entry_path(out_dir):
+    """Return the full path of entry.txt inside out_dir."""
+    return os.path.join(out_dir, "entry.txt")
+
+
 def write_entry(text, out_dir):
     """Write the validated entry to entry.txt inside out_dir."""
     os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, "entry.txt")
+    path = entry_path(out_dir)
     with open(path, "w", encoding="utf-8", newline="") as handle:
         handle.write(text)
     return path
